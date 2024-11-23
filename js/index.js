@@ -190,25 +190,10 @@ addEventListener("DOMContentLoaded", async (event) => {
         }
 
         console.log(musicList)
-        for await (let music of musicList) {
-            document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.')[0].replace(/\-/gm, ' ')}</div><div id="music-${music.split('.')[0]}"></div></div>`
+        for await (let [music, index] of musicList) {
+            document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.')[0].replace(/\_/gm, ' ')}</div><div id="music-${music.split('.')[0]}"></div></div>`
 
-            let wavesurfer = WaveSurfer.create({
-                container: document.querySelector('#music-'+music.split('.')[0]),
-                waveColor: '#dddddd',
-                progressColor: '#ffa358',
-                url: './mp3/'+music,
-                // Set a bar width
-                barWidth: 2,
-                // Optionally, specify the spacing between bars
-                barGap: 1,
-                // And the bar radius
-                barRadius: 2,
-            })
-    
-            wavesurfer.on('interaction', () => {
-                wavesurfer.playPause()
-            })
+            new Function("let wavesurfer"+index+" = WaveSurfer.create({container: document.querySelector('#music-'+music.split('.')[0]),waveColor: '#dddddd',progressColor: '#ffa358',url: './mp3/'+music,barWidth: 2,barGap: 1,barRadius: 2,});wavesurfer"+index+".on('interaction', () => {wavesurfer"+index+".playPause()})")()
             
         }
 
