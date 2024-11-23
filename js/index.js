@@ -191,7 +191,7 @@ addEventListener("DOMContentLoaded", async (event) => {
 
         console.log(musicList)
         for await (let music of musicList) {
-            document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.')[0].replace(/\_/gm, ' ')}</div><div id="music-${music.split('.')[0]}"></div></div>`
+            document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.')[0].replace(/\_/gm, ' ')} <a href="./?a=${music.split('.')[0]}"><i class='bx bxs-right-arrow-circle'></i></a></div><div id="music-${music.split('.')[0]}"></div></div>`
         }
 
         for await (let music of musicList) {
@@ -199,21 +199,19 @@ addEventListener("DOMContentLoaded", async (event) => {
         }
 
     } else {
-        document.querySelector('body').addEventListener("click", function () {
-            if (!document.querySelector("audio")) {
 
-                document.querySelector("#player-list").innerHTML = '<audio style="display:none;" ><source src="'+audio+'" /></audio><div id="playbar"><div id="playTime"></div><div><input type="range" id="duration" class="rangeInput" name="duration" min="0" max="100" value="0" /></div><div id="totTime"></div></div><div id="player"><div class="playButton"><i class="bx bx-play" ></i></div><div class="stopButton"><i class="bx bx-stop" ></i></div><div class="loopButton"><i class="bx bx-revision" style="color:#ff9899;" ></i></div><div><label for="volume"><i class="bx bxs-megaphone" ></i> </label><input type="range" class="rangeInput" id="volume" name="volume" min="0" max="100" value="100" /></div></div></div>'
-                audioplayer = document.querySelector("audio")
-                audioplayer.loop = isLoop
-                audioplayer.volume = volume
-                audioplayer.play()
-                document.querySelector(".playButton").innerHTML = "<i class='bx bx-pause'></i>"
-                isPlaying = true
+        document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${audio.replace(/\_/gm, ' ')}</div><div id="music0"></div></div>`
 
-                playBarContoller()
-                playerController()
-            }
-            
+        let wavesurfer = WaveSurfer.create({
+            container: document.querySelector('#music0'),
+            waveColor: '#dddddd',progressColor: '#ffa358',
+            url: './mp3/'+audio+'.mp3',
+            barWidth: 2,
+            barGap: 1,
+            barRadius: 2,
         })
+
+        wavesurfer.on('interaction', () => {wavesurfer.playPause()})
+
     }
 })
