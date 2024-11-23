@@ -206,8 +206,8 @@ addEventListener("DOMContentLoaded", async (event) => {
                 barRadius: 2,
             })
     
-            wavesurfer.on('click', () => {
-                wavesurfer.play()
+            wavesurfer.on('interaction', () => {
+                wavesurfer.playPause()
             })
             
         }
