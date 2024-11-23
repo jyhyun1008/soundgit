@@ -197,7 +197,7 @@ addEventListener("DOMContentLoaded", async (event) => {
                 container: document.querySelector('#music-'+music.split('.')[0]),
                 waveColor: '#dddddd',
                 progressColor: '#ffa358',
-                url: './mp3/'+musicList[i],
+                url: './mp3/'+music,
             })
     
             wavesurfer.on('click', () => {
