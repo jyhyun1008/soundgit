@@ -190,10 +190,10 @@ addEventListener("DOMContentLoaded", async (event) => {
         }
 
         console.log(musicList)
-        for await (let [music, index] of musicList) {
+        for await (let music of musicList) {
             document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.')[0].replace(/\_/gm, ' ')}</div><div id="music-${music.split('.')[0]}"></div></div>`
 
-            new Function("let wavesurfer"+index+" = WaveSurfer.create({container: document.querySelector('#music-"+music.split('.')[0]+"'),waveColor: '#dddddd',progressColor: '#ffa358',url: './mp3/"+music+"',barWidth: 2,barGap: 1,barRadius: 2,});wavesurfer"+index+".on('interaction', () => {wavesurfer"+index+".playPause()})")()
+            new Function("let wavesurfer"+music+" = WaveSurfer.create({container: document.querySelector('#music-"+music.split('.')[0]+"'),waveColor: '#dddddd',progressColor: '#ffa358',url: './mp3/"+music+"',barWidth: 2,barGap: 1,barRadius: 2,});wavesurfer"+music+".on('interaction', () => {wavesurfer"+music+".playPause()})")()
             
         }
 
