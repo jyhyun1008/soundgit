@@ -193,7 +193,7 @@ addEventListener("DOMContentLoaded", async (event) => {
         for await (let music of musicList) {
             document.querySelector('#player-list').innerHTML += `<div id="music-${music.split('.')[0]}"></div>`
 
-            var wavesurfer = WaveSurfer.create({
+            let wavesurfer = WaveSurfer.create({
                 container: document.querySelector('#music-'+music.split('.')[0]),
                 waveColor: '#dddddd',
                 progressColor: '#ffa358',
