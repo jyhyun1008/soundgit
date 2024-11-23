@@ -167,9 +167,40 @@ const shuffleController = function () {
     })
 }
 
-addEventListener("DOMContentLoaded", (event) => {
+addEventListener("DOMContentLoaded", async (event) => {
     if (!audio) { //main page
+
+        var result1 = await fetch(`https://api.github.com/repos/${USERNAME}/${REPONAME}/git/trees/main?recursive=1`)
+        var folderList = await result1.json()
+
+        var musicList = []
         
+        for (let folder of folderList.tree) {
+            if (folder.path == 'mp3') {
+                var result2 = await fetch(folder.url)
+                var audioList = await result2.json()
+
+                for (let audio of audioList.tree) {
+                    if (audio.path.includes('.mp3')) {
+                        musicList.push(`https://github.com/${USERNAME}/${REPONAME}/raw/refs/heads/main/mp3/${audio.path}`)
+                    }
+                }
+            }
+        }
+
+        console.log(musicList)
+        for (let i=0; i<musicList.length; i++) {
+            document.querySelector('#player-list').innerHTML += `<div id="music-${i}"></div>`
+
+            const wavesurfer2 = WaveSurfer.create({
+                container: document.querySelector('#music-'+i),
+                waveColor: 'rgb(200, 0, 200)',
+                progressColor: 'rgb(100, 0, 100)',
+                url: musicList[i],
+            })
+    
+        }
+
     } else {
         document.querySelector('body').addEventListener("click", function () {
             if (!document.querySelector("audio")) {
