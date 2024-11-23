@@ -190,16 +190,20 @@ addEventListener("DOMContentLoaded", async (event) => {
         }
 
         console.log(musicList)
-        for (let i=0; i<musicList.length; i++) {
-            document.querySelector('#player-list').innerHTML += `<div id="music-${i}"></div>`
+        for await (let music of musicList) {
+            document.querySelector('#player-list').innerHTML += `<div id="music-${music.split('.')[0]}"></div>`
 
-            const wavesurfer2 = WaveSurfer.create({
-                container: document.querySelector('#music-'+i),
-                waveColor: 'rgb(200, 0, 200)',
-                progressColor: 'rgb(100, 0, 100)',
+            var wavesurfer = WaveSurfer.create({
+                container: document.querySelector('#music-'+music.split('.')[0]),
+                waveColor: '#dddddd',
+                progressColor: '#ffa358',
                 url: './mp3/'+musicList[i],
             })
     
+            wavesurfer.on('click', () => {
+                wavesurfer.play()
+            })
+            
         }
 
     } else {
