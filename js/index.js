@@ -191,7 +191,7 @@ addEventListener("DOMContentLoaded", async (event) => {
 
         console.log(musicList)
         for await (let music of musicList) {
-            document.querySelector('#player-list').innerHTML += `<div id="music-${music.split('.')[0]}"></div>`
+            document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.').replace(/\-/gm, ' ')}</div><div id="music-${music.split('.')[0]}"></div></div>`
 
             let wavesurfer = WaveSurfer.create({
                 container: document.querySelector('#music-'+music.split('.')[0]),
