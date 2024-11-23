@@ -194,9 +194,9 @@ addEventListener("DOMContentLoaded", async (event) => {
             document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${music.split('.')[0].replace(/\_/gm, ' ')}</div><div id="music-${music.split('.')[0]}"></div></div>`
         }
 
-        new Function("let wavesurfer"+musicList[0].split('.')[0]+" = WaveSurfer.create({container: document.querySelector('#music-"+musicList[0].split('.')[0]+"'),waveColor: '#dddddd',progressColor: '#ffa358',url: './mp3/"+musicList[0]+"',barWidth: 2,barGap: 1,barRadius: 2,});wavesurfer"+musicList[0].split('.')[0]+".on('interaction', () => {wavesurfer"+musicList[0].split('.')[0]+".playPause()})")()
-
-        new Function("let wavesurfer"+musicList[1].split('.')[0]+" = WaveSurfer.create({container: document.querySelector('#music-"+musicList[1].split('.')[0]+"'),waveColor: '#dddddd',progressColor: '#ffa358',url: './mp3/"+musicList[1]+"',barWidth: 2,barGap: 1,barRadius: 2,});wavesurfer"+music.split('.')[0]+".on('interaction', () => {wavesurfer"+music.split('.')[0]+".playPause()})")()
+        for await (let music of musicList) {
+            new Function("let wavesurfer"+music.split('.')[0]+" = WaveSurfer.create({container: document.querySelector('#music-"+music.split('.')[0]+"'),waveColor: '#dddddd',progressColor: '#ffa358',url: './mp3/"+music+"',barWidth: 2,barGap: 1,barRadius: 2,});wavesurfer"+music.split('.')[0]+".on('interaction', () => {wavesurfer"+music.split('.')[0]+".playPause()})")()
+        }
 
     } else {
         document.querySelector('body').addEventListener("click", function () {
