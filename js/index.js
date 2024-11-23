@@ -182,7 +182,8 @@ addEventListener("DOMContentLoaded", async (event) => {
 
                 for (let audio of audioList.tree) {
                     if (audio.path.includes('.mp3')) {
-                        musicList.push(`https://github.com/${USERNAME}/${REPONAME}/raw/refs/heads/main/mp3/${audio.path}`)
+                        //musicList.push(`https://github.com/${USERNAME}/${REPONAME}/raw/refs/heads/main/mp3/${audio.path}`)
+                        musicList.push(`${audio.path}`)
                     }
                 }
             }
@@ -196,7 +197,7 @@ addEventListener("DOMContentLoaded", async (event) => {
                 container: document.querySelector('#music-'+i),
                 waveColor: 'rgb(200, 0, 200)',
                 progressColor: 'rgb(100, 0, 100)',
-                url: musicList[i],
+                url: './mp3/'+musicList[i],
             })
     
         }
