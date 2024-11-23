@@ -198,6 +198,12 @@ addEventListener("DOMContentLoaded", async (event) => {
                 waveColor: '#dddddd',
                 progressColor: '#ffa358',
                 url: './mp3/'+music,
+                // Set a bar width
+                barWidth: 2,
+                // Optionally, specify the spacing between bars
+                barGap: 1,
+                // And the bar radius
+                barRadius: 2,
             })
     
             wavesurfer.on('click', () => {
