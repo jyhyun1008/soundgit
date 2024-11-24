@@ -169,7 +169,7 @@ addEventListener("DOMContentLoaded", async (event) => {
                     </div>
                     <div class="play-info-box">
                         <div class="play-title">${music.split('.')[0].split('_')[1].replace(/\-/gm, ' ')}</div>
-                        <div class="play-user">${music.split('_')[0]} · 재연</div>
+                        <div class="play-user">${music.split('_')[0]} · ${ARTIST}</div>
                     </div>
                 </div>
                 <a href="./?a=${music.split('.')[0]}"><div class="play-link-box">
@@ -202,6 +202,20 @@ addEventListener("DOMContentLoaded", async (event) => {
                 document.querySelector(".playpause").innerHTML = "<i class='bx bxs-square' ></i>"
                 isPlaying = true
 
+                if ("mediaSession" in navigator) {
+                    navigator.mediaSession.metadata = new MediaMetadata({
+                      title: musicList[i].split('.')[0].split('_')[1].replace(/\-/gm, ' '),
+                      artist: ARTIST,
+                      artwork: [
+                        {
+                          src: imgList[i],
+                          sizes: "512x512",
+                          type: "image/png",
+                        },
+                      ],
+                    });
+                }
+
                 if (isFirstPlay) {
                     playBarContoller()
                     playerController()
@@ -211,6 +225,15 @@ addEventListener("DOMContentLoaded", async (event) => {
             })
 
         }
+
+    } else if (audio == 'about') {
+
+        var infoUrl = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPONAME+`/main/README.md`
+        fetch(infoUrl)
+        .then(res => res.text())
+        .then((out) => {
+            document.querySelector('#player-overflow').innerHTML = marked.parse(out)
+        })
 
     } else {
 
@@ -238,7 +261,13 @@ addEventListener("DOMContentLoaded", async (event) => {
         fetch(infoUrl)
         .then(res => res.text())
         .then((out) => {
-            document.querySelector('#player-overflow').innerHTML = marked.parse(out)
+            if (out.includes('404: Not Found')) {
+
+                document.querySelector('#player-overflow').innerHTML = '<p>등록된 정보가 없습니다.</p>'
+            } else {
+
+                document.querySelector('#player-overflow').innerHTML = marked.parse(out)
+            }
         })
 
     }

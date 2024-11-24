@@ -12,10 +12,6 @@
     font-style: normal;
 }
 
-:root {
-    --accent: #ff9899;
-}
-
 body {
     font-family: 'Pretendard';
     background: #f8f8f8;
@@ -34,22 +30,24 @@ body {
 }
 
 #nav-box {
-    position: fixed;
     top: 0;
     width: 100%;
     left: 0;
-    height: 3em;
-    background-color: black;
-    color: var(--accent);
+    z-index: 99999;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 99999;
+    color: #9c9c9c;
 }
 
 #title {
     font-size: 1em;
-    padding: 0 10px;
+    font-weight: 400;
+}
+
+#menu-box {
+    display: flex;
+    gap: 1em;
 }
 
 #content-box {
@@ -57,7 +55,7 @@ body {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
-    margin-top: 5em;
+    margin-top: 1em;
     gap: 20px;
     max-height: 370px;
 }
@@ -83,8 +81,12 @@ body {
 }
 
 a {
-    color: var(--accent);
+    color: inherit;
     text-decoration: none;
+}
+
+img {
+    width: 100%;
 }
 
 .mainbox {
