@@ -1,54 +1,54 @@
 # Sound-Git
 
-[데모](https://page.peacht.art/soundgit/) (제가 진짜 쓰고있습니다)
+[Demo](https://page.peacht.art/soundgit/) (I’m currently using it!)
 
-Sound-Git은, Github Pages를 이용해 mp3 파일들을 호스팅하고 이들을 재생할 수 있게 도와주는 정적 플레이어입니다.
+Sound-Git is a static player that helps you host and play MP3 files using GitHub Pages.
 
-## 주요 기능
+## Key Features
 
-| 구분 | Sound-Git | Soundcloud(Free) |
+| Feature | Sound-Git | SoundCloud (Free) |
 |---|---|---|
-| 음원 업로드 | O(Git) | O |
-| 자신만의 페이지 | O | O |
-| 음원 개별 페이지 | O | O |
-| 음원 길이 | 무제한 | 3시간 |
-| 재생 목록 | X | O |
-| 음원 반복 재생 | O | O |
-| 백그라운드 재생 | O | O |
-| 음원 치환 | O | X |
-| 추가 정보 입력 | O | O |
-| 덧글 | X | O |
-| 오픈그래프 미리보기 | X | O |
+| Audio upload | O (via Git) | O |
+| Personalized page | O | O |
+| Individual audio page | O | O |
+| Audio length | Unlimited | 3 hours |
+| Playlist | X | O |
+| Audio loop | O | O |
+| Background playback | O | O |
+| Audio replacement | O | X |
+| Additional info input | O | O |
+| Comments | X | O |
+| Open Graph preview | X | O |
 
-## 사용방법
+## How to Use
 
-기본적인 사용방법은 다음과 같습니다. git을 사용할 줄 아신다는 전제 하에 설명드립니다.
+The basic usage is as follows. This assumes you are familiar with Git.
 
-1. 깃허브에 가입합니다.
-2. [이 리포지토리](https://github.com/jyhyun1008/soundgit)를 포크합니다.
-3. `mp3`, `img`, `info` 폴더 안의 내용물을 지우고 자신의 파일들로 대체합니다.
-4. `/README.md` 파일을 자기소개 따위로 수정하면 포트폴리오로 사용할 수도 있습니다.
+1. Sign up for GitHub.  
+2. Fork [this repository](https://github.com/jyhyun1008/soundgit).  
+3. Delete the contents of the `mp3`, `img`, and `info` folders and replace them with your files.  
+4. Edit the `/README.md` file, for example, to include your introduction, and you can use it as a portfolio.  
 
-## 업로드
+## Upload Instructions
 
-`mp3`, `img`, `info` 폴더 안에 각각 같은 파일명을 다른 확장자로 업로드하면 됩니다.
+Upload files with the same filename but different extensions in the `mp3`, `img`, and `info` folders.
 
-날짜를 빼먹지 말아 주세요. 숫자가 아니어도 동작을 하니, 언더바 앞에 `unknown`으로라도 표기해주세요.
+Don’t forget to include the date. If not, you can still make it work by using `unknown` before the underscore.
 
 ```
-날짜_노래제목-띄어쓰기는-하이픈.mp3
-날짜_노래제목-띄어쓰기는-하이픈.png
-날짜_노래제목-띄어쓰기는-하이픈.md
+date_song-title.mp3  
+date_song-title.png  
+date_song-title.md  
 ```
 
-- `mp3`: 호스팅할 `.mp3` 파일
-- `img`: 커버 이미지 `.png` 파일. 정사각형이 아니어도 무난하게 크롭되지만 정사각형을 권장합니다. `.jpg` 파일은 변환해주세요.
-- `md`: 마크다운 형식으로 음원정보, 가사가 포함된 `.md` 파일. UI에 노래 제목을 띄우는 부분이 없으므로 이 파일에 명시하는 것을 추천드립니다.
+- `mp3`: The `.mp3` file you want to host.  
+- `img`: The `.png` file for the cover image. While non-square images will be cropped, square images are recommended. Please convert `.jpg` files to `.png`.  
+- `md`: A Markdown file (`.md`) containing audio information and lyrics. Since there’s no UI section to display song titles, it’s recommended to specify them in this file.  
 
-`img`, `info` 없이 `mp3` 파일만 올리셔도 동작하는 데에는 문제가 없습니다.
+Even if you only upload the `mp3` file without `img` or `info`, it will still work.
 
-## 주의사항
+## Notes
 
-- 피치타르트 아래의 프로젝트이기에, 기본 사진 및 아이콘이 피치타르트 기본 아이콘으로 되어있습니다. 직접 수정 부탁드립니다.
-- 자신이 만들지 않았거나, 자신에게 권리가 없는 음원을 업로드하지 말아 주세요!
-- Github 특성 상, 올라온 음원 파일을 누구나 다운로드할 수 있습니다.
+- As this is a project under Peachtart, the default images and icons are set to the Peachtart default icons. Please replace them yourself.  
+- Do not upload audio files that you didn’t create or don’t own the rights to!  
+- Due to the nature of GitHub, uploaded audio files can be downloaded by anyone.

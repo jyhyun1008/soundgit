@@ -237,13 +237,16 @@ addEventListener("DOMContentLoaded", async (event) => {
 
     } else {
 
+        var img
         document.querySelector('#controller-box').classList.remove('inactive')
         try {
             var fetchImg = await fetch('./img/'+audio+'.png', {mode: "no-cors"})
             if (fetchImg.status == 404) throw new Error('Request faild');
             document.querySelector('#img-box').innerHTML = `<img src="./img/${audio}.png">`
+            img = `./img/${audio}.png`
         } catch (err) {
             document.querySelector('#img-box').innerHTML = `<img src="./peachtart1.png">`
+            img = "./peachtart1.png"
         }
         
         audioplayer.src = './mp3/'+audio+'.mp3'
@@ -254,6 +257,20 @@ addEventListener("DOMContentLoaded", async (event) => {
             playBarContoller()
             playerController()
             isFirstPlay = false
+        }
+
+        if ("mediaSession" in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+              title: audio.split('_')[1].replace(/\-/gm, ' '),
+              artist: ARTIST,
+              artwork: [
+                {
+                  src: img,
+                  sizes: "512x512",
+                  type: "image/png",
+                },
+              ],
+            });
         }
 
         var infoUrl = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPONAME+`/main/info/${audio}.md`
