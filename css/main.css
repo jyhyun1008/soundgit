@@ -265,3 +265,26 @@ a {
     align-items: center;
     color: black;
 }
+
+@media screen and (max-width: 720px){ 
+
+    #app {
+        align-items: unset;
+    }
+
+    #content-box {
+        flex-direction: column;
+        max-height: unset;
+    }
+
+    #img-box {
+        width: 100%;
+        height: unset;
+        aspect-ratio: 1 / 1;
+    }
+
+    #player-list {
+        max-width: unset;
+    }
+
+}
