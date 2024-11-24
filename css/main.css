@@ -275,6 +275,7 @@ a {
     #content-box {
         flex-direction: column;
         max-height: unset;
+        padding: 20px;
     }
 
     #img-box {
@@ -284,6 +285,7 @@ a {
     }
 
     #player-list {
+        width: 100%;
         max-width: unset;
     }
 
