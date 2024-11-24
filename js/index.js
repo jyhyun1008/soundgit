@@ -143,19 +143,23 @@ addEventListener("DOMContentLoaded", async (event) => {
 
         for await(let music of musicList) {
 
+            let img
             try {
                 var fetchImg = await fetch('./img/'+music.split('.')[0]+'.png', {mode: "no-cors"})
-                if (!fetchImg.ok) throw new Error('Request faild');
+                console.log(fetchImg)
+                if (!fetchImg) throw new Error('Request faild');
                 imgList.push('./img/'+music.split('.')[0]+'.png')
+                img = './img/'+music.split('.')[0]+'.png'
             } catch (err) {
                 imgList.push('./peachtart1.png')
+                img = './peachtart1.png'
             }
             
             document.querySelector('#player-overflow').innerHTML += `
             <div class="play-title-box">
                 <div class="play-play-box" id="playbox${index}">
                     <div class="play-img-box">
-                        <img src="${imgList[index]}">
+                        <img src="${img}">
                     </div>
                     <div class="play-info-box">
                         <div class="play-title">${music.split('.')[0].split('_')[1].replace(/\-/gm, ' ')}</div>
@@ -168,6 +172,8 @@ addEventListener("DOMContentLoaded", async (event) => {
             </div>`
             index++;
         }
+
+        console.log(imgList)
 
         for(let i=0; i<musicList.length; i++ ) {
 
