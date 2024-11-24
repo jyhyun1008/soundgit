@@ -113,6 +113,7 @@ const playerController = function () {
 
     document.querySelector("#volume").addEventListener("change", (event) => {
         audioplayer.volume = parseInt(event.target.value)/100
+        volume = parseInt(event.target.value)/100
     });
 
     document.querySelector('audio').addEventListener("ended", ()=> {
