@@ -13,6 +13,7 @@
     <meta property="og:image" content="./soundcloud.jpg" /> 
     <meta property="og:title" content="Sound-Git" /> 
     <meta property="og:description" content="정적 mp3파일 재생기. 미리듣기는 안됩니다. 링크 눌러주세요." /> 
+    <meta property="og:audio" content="./mp3/d241122_in_my_dream.mp3" /> 
 </head>
 <body>
     <div id="app">
@@ -23,7 +24,23 @@
                 </div>
             </div>
             <div id="content-box">
-                <div id="player-list">
+                <div id="player-box">
+                    <div id="img-box" class="mainbox">
+                        <img src="./soundcloud.jpg">
+                    </div>
+                    <div id="controller-box" class="mainbox">
+                        <div id="playbar-box">
+                            <div id="playbar"></div>
+                            <div id="playdot"></div>
+                        </div>
+                        <div id="playpause-box">
+                            <i class='bx bx-refresh replay' ></i>
+                            <i class='bx bxs-right-arrow playpause' ></i>
+                            <i class='bx bxs-volume-full volume' ></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="player-list" class="mainbox">
                 </div>
             </div>
         </div>
