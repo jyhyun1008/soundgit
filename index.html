@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Sound-Git</title>
     <meta name="summary" content="정적 mp3파일 재생기. 미리듣기는 안됩니다. 링크 눌러주세요.">
-    <link rel="shortcut icon" href="./soundcloud.jpg">
+    <link rel="shortcut icon" href="./Peachtartshortcut.ico">
     <link rel="stylesheet" media="screen" href="./css/main.css?v=0.0.3">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <meta property="og:image" content="./soundcloud.jpg" /> 
+    <meta property="og:image" content="./peachtart.png" /> 
     <meta property="og:title" content="Sound-Git" /> 
     <meta property="og:description" content="정적 mp3파일 재생기. 미리듣기는 안됩니다. 링크 눌러주세요." /> 
-    <meta property="og:video:url" content="https://embeddable-music-player.yizack.com/player/just-stay.html" /> 
 </head>
 <body>
     <div id="app">
@@ -26,24 +25,33 @@
             <div id="content-box">
                 <div id="player-box">
                     <div id="img-box" class="mainbox">
-                        <img src="./soundcloud.jpg">
+                        <img src="./peachtart1.png">
                     </div>
-                    <div id="controller-box" class="mainbox">
+                    <div id="controller-box" class="mainbox inactive">
                         <div id="playbar-box">
-                            <div id="playbar"></div>
-                            <div id="playdot"></div>
+                            <input type="range" id="duration" class="rangeInput" name="duration" min="0" max="100" value="0" />
+                            <div id="duration-box">
+                                <div id="playTime">00:00</div>
+                                <div id="totTime">00:00</div>
+                            </div>
                         </div>
                         <div id="playpause-box">
-                            <i class='bx bx-refresh replay' ></i>
-                            <i class='bx bxs-right-arrow playpause' ></i>
-                            <i class='bx bxs-volume-full volume' ></i>
+                            <div class="replay"><i class='bx bx-refresh' ></i></div>
+                            <div class="playpause"><i class='bx bxs-right-arrow ' ></i></div>
+                            <div class="volume"><i class='bx bxs-volume-full ' ></i></div>
+                            <div id="volume-box">
+                                <input type="range" id="volume" class="rangeInput" name="volume" min="0" max="100" value="100" />
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div id="player-list" class="mainbox">
+                    <div id="player-overflow">
+                    </div>
                 </div>
             </div>
         </div>
+        <audio style="display:none;" ></audio>
     </div>
     <script src="./settings.js?v=0.0.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@15.0.2/lib/marked.umd.min.js"></script>    
