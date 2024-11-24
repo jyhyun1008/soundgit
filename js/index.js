@@ -147,7 +147,7 @@ addEventListener("DOMContentLoaded", async (event) => {
             try {
                 var fetchImg = await fetch('./img/'+music.split('.')[0]+'.png', {mode: "no-cors"})
                 console.log(fetchImg)
-                if (!fetchImg) throw new Error('Request faild');
+                if (fetchImg.status == 404) throw new Error('Request faild');
                 imgList.push('./img/'+music.split('.')[0]+'.png')
                 img = './img/'+music.split('.')[0]+'.png'
             } catch (err) {
@@ -211,7 +211,7 @@ addEventListener("DOMContentLoaded", async (event) => {
         document.querySelector('#controller-box').classList.remove('inactive')
         try {
             var fetchImg = await fetch('./img/'+audio+'.png', {mode: "no-cors"})
-            if (!fetchImg.ok) throw new Error('Request faild');
+            if (fetchImg.status == 404) throw new Error('Request faild');
             document.querySelector('#img-box').innerHTML = `<img src="./img/${audio}.png">`
         } catch (err) {
             document.querySelector('#img-box').innerHTML = `<img src="./peachtart1.png">`
