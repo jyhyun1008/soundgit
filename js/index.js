@@ -49,7 +49,7 @@ addEventListener("DOMContentLoaded", async (event) => {
 
     } else {
 
-        document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${audio.replace(/\_/gm, ' ')}</div><div id="music0"></div></div>`
+        document.querySelector('#player-list').innerHTML += `<div class="music"><div class="music-title">${audio.replace(/\_/gm, ' ')}</div><div id="music0"></div></div><div class="music lyrics"></div>`
 
         let wavesurfer = WaveSurfer.create({
             container: document.querySelector('#music0'),
@@ -61,6 +61,14 @@ addEventListener("DOMContentLoaded", async (event) => {
         })
 
         wavesurfer.on('interaction', () => {wavesurfer.playPause()})
+
+        var infoUrl = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPONAME+`/main/info/${audio}.md`
+
+        fetch(infoUrl)
+        .then(res => res.text())
+        .then((out) => {
+            document.querySelector(".lyrics").innerHTML = marked.parse(out)
+        })
 
     }
 })
