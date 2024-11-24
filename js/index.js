@@ -114,6 +114,11 @@ const playerController = function () {
     document.querySelector("#volume").addEventListener("change", (event) => {
         audioplayer.volume = parseInt(event.target.value)/100
     });
+
+    document.querySelector('audio').addEventListener("ended", ()=> {
+        document.querySelector(".playpause").innerHTML = "<i class='bx bxs-right-arrow ' ></i>"
+        isPlaying = false
+    })
 }
 
 addEventListener("DOMContentLoaded", async (event) => {
