@@ -26,8 +26,9 @@ The basic usage is as follows. This assumes you are familiar with Git.
 
 1. Sign up for GitHub.  
 2. Fork [this repository](https://github.com/jyhyun1008/soundgit).  
-3. Delete the contents of the `mp3`, `img`, and `info` folders and replace them with your files.  
-4. Edit the `/README.md` file, for example, to include your introduction, and you can use it as a portfolio.  
+3. Edit `/settings.js`.  
+4. Delete the contents of the `mp3`, `img`, and `info` folders and replace them with your files.  
+5. Edit the `/README.md` file, for example, to include your introduction, and you can use it as a portfolio.  
 
 ## Upload Instructions
 
