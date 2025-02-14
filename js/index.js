@@ -157,8 +157,8 @@ addEventListener("DOMContentLoaded", async (event) => {
                 imgList.push('./img/'+music.split('.')[0]+'.png')
                 img = './img/'+music.split('.')[0]+'.png'
             } catch (err) {
-                imgList.push('./peachtart1.png')
-                img = './peachtart1.png'
+                imgList.push('./logo.png')
+                img = './logo.png'
             }
             
             document.querySelector('#player-overflow').innerHTML += `
@@ -245,8 +245,8 @@ addEventListener("DOMContentLoaded", async (event) => {
             document.querySelector('#img-box').innerHTML = `<img src="./img/${audio}.png">`
             img = `./img/${audio}.png`
         } catch (err) {
-            document.querySelector('#img-box').innerHTML = `<img src="./peachtart1.png">`
-            img = "./peachtart1.png"
+            document.querySelector('#img-box').innerHTML = `<img src="./logo.png">`
+            img = "./logo.png"
         }
         
         audioplayer.src = './mp3/'+audio+'.mp3'
